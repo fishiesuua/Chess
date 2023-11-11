@@ -52,15 +52,17 @@ class GameState():
     '''
 
     def getAllPossibleMoves(self):
-        moves = ()
+        moves = []
         for r in range(len(self.board)): # number of rows
             for c in range(len(self.board[r])): # number of columns in given row
                 turn = self.board[r][c][0]
+                print(f"{r=} {c=} {turn=}")
                 if (turn == 'w' and self.whiteToMove) or (turn == 'b' and not self.whiteToMove):
                     piece = self.board[r][c][1]
-                    if piece == 'p':
+                    print(f"{piece=}")
+                    if piece.lower() == 'p':
                         self.getPawnMoves(r, c, moves)
-                    if piece == 'r':
+                    if piece.lower() == 'r':
                         self.getRookMoves(r, c, moves)
         return moves
 
